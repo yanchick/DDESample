@@ -35,16 +35,7 @@ project_root/
 ├── utils.py             # Utility functions
 ├── requirements.txt     # Project dependencies
 ├── .env                 # Environment variables
-│
-├── tests/              # Unit tests
-│   ├── __init__.py
-│   ├── test_arxiv_collector.py
-│   ├── test_llm_processor.py
-│   └── test_database.py
-│
-└── eda_results/        # Generated visualizations
-    ├── papers_per_category.png
-    └── papers_per_month.png
+└── 
 ```
 
 ## 🚀 Getting Started
