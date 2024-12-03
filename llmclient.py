@@ -60,6 +60,8 @@ class LLMModel:
             return ModelProvider.ANTHROPIC
         elif "ollama" in model_name_lower or self._is_ollama_model():
             logger.info("Detected Ollama provider")
+            self.model_name = self.model_name.replace("ollama/","")
+            logger.debug(self.model_name)
             return ModelProvider.OLLAMA
 
         logger.warning(f"Unknown provider for model: {self.model_name}")

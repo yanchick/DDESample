@@ -12,7 +12,7 @@ def collect_papers(max_papers):
 
 @task
 def process_papers(papers):
-    processor = LLMProcessor()
+    processor = LLMProcessor("ollama/qwen2.5-coder:latest")
     return [processor.process_paper(paper) for paper in papers]
 
 

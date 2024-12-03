@@ -2,11 +2,11 @@ from openai import OpenAI
 from typing import Dict
 from config import OPENAI_API_KEY
 from ollama import Client
-
+from llmclient import LLMModel
 
 class LLMProcessor:
-    def __init__(self):
-        self.client = Client(model="")
+    def __init__(self, model):
+        self.model = LLMModel(model_name=model)
 
     def process_paper(self, paper: Dict) -> Dict:
         prompt = f"""
@@ -19,12 +19,9 @@ class LLMProcessor:
         Abstract: {paper['abstract']}
         """
 
-        response = self.client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
-        )
+        response = self.model.generate(prompt)
 
-        analysis = response.choices[0].message.content
+        analysis = response
 
         paper['llm_analysis'] = analysis
         return paper

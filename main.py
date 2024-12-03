@@ -34,9 +34,7 @@ def run_pipeline(max_papers: int = 100, save_results: bool = True):
         execution_time = datetime.now() - start_time
         logger.info(f"Pipeline completed successfully in {execution_time}")
         logger.info("Summary of results:")
-        logger.info(f"Total papers processed: {results.get('total_papers', 0)}")
-        logger.info(f"Unique authors found: {results.get('unique_authors', 0)}")
-        logger.info(f"Date range: {results.get('date_range', 'N/A')}")
+        logger.info(f"Total papers processed: {results.__len__()}")
 
         return results
 
@@ -51,8 +49,8 @@ def main():
     parser.add_argument(
         '--max-papers',
         type=int,
-        default=100,
-        help='Maximum number of papers to collect (default: 100)'
+        default=1,
+        help='Maximum number of papers to collect (default: 3)'
     )
     parser.add_argument(
         '--no-save',
@@ -67,9 +65,6 @@ def main():
 
     args = parser.parse_args()
 
-    # Настройка уровня логирования
-    if args.debug:
-        logging.getLogger().setLevel(logging.DEBUG)
 
     # Создание необходимых папок
     setup_folders()
