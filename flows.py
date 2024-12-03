@@ -1,5 +1,5 @@
 from prefect import flow, task
-from scrap import ArxivCollector
+from arxiv_scrap import ArxivCollector
 from preproc import LLMProcessor
 from database import Database
 
